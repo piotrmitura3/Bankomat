@@ -16,6 +16,7 @@ public class PanelWyboruOperacji extends JPanel {
     private Klient klient;
     private BazaKlientow bazaKlientow = new BazaKlientow();
     private KlientZnajdz klientZnajdz = new KlientZnajdz(bazaKlientow);
+    private JButton przelewyButton;
 
     public void stanKontaKlienta(){
 
@@ -37,10 +38,12 @@ public class PanelWyboruOperacji extends JPanel {
         wyborWplatyButton = new JButton("Wpłata");
         wyborWyplatyButton = new JButton("Wyplata");
         stanKontaButton = new JButton("Pokaz stan konta");
+        przelewyButton = new JButton("Wykonaj przlew");
 
         this.add(wyborWplatyButton);
         this.add(wyborWyplatyButton);
         this.add(stanKontaButton);
+        this.add(przelewyButton);
     }
 
     public void stworzActionListner(){
