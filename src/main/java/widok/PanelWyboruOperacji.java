@@ -52,7 +52,7 @@ public class PanelWyboruOperacji extends JPanel {
         });
 
         wyborWplatyButton.addActionListener(e -> {
-            glownaRamka.setContentPane(new PanelWplaty(this));
+            glownaRamka.setContentPane(new PanelWplaty(glownaRamka));
             glownaRamka.pack();
         });
 
