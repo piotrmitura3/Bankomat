@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class OperacjeKlienta {
 
     public BigDecimal operacjeKlienta(int rodzajOperacji, BigDecimal kwotaDoWplatyLubWyplaty, Klient klient) {
-        BigDecimal stanKonta = klient.getStanKontaKlienta();
+        BigDecimal stanKonta = klient.getStanKonta();
         switch (rodzajOperacji) {
             case 1:
                 if (kwotaDoWplatyLubWyplaty == null){

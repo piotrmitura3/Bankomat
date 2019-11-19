@@ -24,7 +24,7 @@ class OperacjeKlientaStart {
         //given
         int rodzajOperacji = 1;
         BigDecimal kwotaDoWplaty = new BigDecimal(2000);
-        Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+        Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
         BigDecimal spodziewanyWynik = new BigDecimal(17000);
 
         //when
@@ -39,7 +39,7 @@ class OperacjeKlientaStart {
         //given
         int rodzajOperacji = 2;
         BigDecimal kwotaDoWyplaty = new BigDecimal(6000);
-        Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+        Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
         BigDecimal spodziewanyWynik = new BigDecimal(9000);
 
         //when
@@ -54,7 +54,7 @@ class OperacjeKlientaStart {
         //given
         int rodzajOperacji = 4;
         BigDecimal kwotaDoWplaty = new BigDecimal(6000);
-        Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+        Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
         BigDecimal spodziwanyWynik = new BigDecimal(15000);
 
         //when
@@ -69,7 +69,7 @@ class OperacjeKlientaStart {
         //given
         int rodzajOperacji = 2;
         BigDecimal kwotaDoWyplaty = new BigDecimal(16000);
-        Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+        Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
         BigDecimal spodziewanyWynik = new BigDecimal(15000);
 
         //when
@@ -84,7 +84,7 @@ class OperacjeKlientaStart {
         //given
         int rodzajOperacji = 2;
         BigDecimal kwotaDoWyplaty = new BigDecimal(-1000);
-        Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+        Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
         BigDecimal spodziewanyWynik = new BigDecimal(15000);
 
         //when
@@ -99,7 +99,7 @@ class OperacjeKlientaStart {
         //given
         int rodzajOperacji = 1;
         BigDecimal kwotaDoWplaty = new BigDecimal(-1000);
-        Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+        Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
         BigDecimal spodziewanyWynik = new BigDecimal(15000);
 
         //when
@@ -114,7 +114,7 @@ class OperacjeKlientaStart {
     //given
     int rodzajOperacji = 1;
     BigDecimal kwotaDoWplaty = null;
-    Klient klient = Klient.builder().idKlienta(4534).stanKontaKlienta(new BigDecimal(15000)).build();
+    Klient klient = Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(15000)).build();
     BigDecimal spodziewanyWynik = new BigDecimal(15000);
 
     //when

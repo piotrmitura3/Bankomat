@@ -21,7 +21,7 @@ public class PanelWyboruOperacji extends JPanel {
     public void stanKontaKlienta(){
 
         klient = klientZnajdz.znajdzKlienta(glownaRamka.getNrKlientaTextField());
-        BigDecimal stanKontaKlienta = klient.getStanKontaKlienta();
+        BigDecimal stanKontaKlienta = klient.getStanKonta();
         JOptionPane.showMessageDialog(null, "Stan konta wynosi: " + stanKontaKlienta, "Stan konta Klienta", JOptionPane.YES_NO_CANCEL_OPTION);
         glownaRamka.setContentPane(new PanelWyboruOperacji(glownaRamka));
     }

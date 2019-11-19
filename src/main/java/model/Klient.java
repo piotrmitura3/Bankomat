@@ -8,14 +8,18 @@ import java.util.Objects;
 @Builder
 public class Klient {
     private Integer idKlienta;
-    private BigDecimal stanKontaKlienta;
+    private BigDecimal stanKonta;
+    private String nrKonta;
 
-    public Klient(Integer idKlienta, BigDecimal stanKontaKlienta) {
-        this.idKlienta = idKlienta;
-        this.stanKontaKlienta = stanKontaKlienta;
-    }
+
 
     public Klient() {
+    }
+
+    public Klient(Integer idKlienta, BigDecimal stanKonta, String nrKonta) {
+        this.idKlienta = idKlienta;
+        this.stanKonta = stanKonta;
+        this.nrKonta = nrKonta;
     }
 
     public Integer getIdKlienta() {
@@ -26,12 +30,20 @@ public class Klient {
         this.idKlienta = idKlienta;
     }
 
-    public BigDecimal getStanKontaKlienta() {
-        return stanKontaKlienta;
+    public BigDecimal getStanKonta() {
+        return stanKonta;
     }
 
-    public void setStanKontaKlienta(BigDecimal stanKontaKlienta) {
-        this.stanKontaKlienta = stanKontaKlienta;
+    public void setStanKonta(BigDecimal stanKonta) {
+        this.stanKonta = stanKonta;
+    }
+
+    public String getNrKonta() {
+        return nrKonta;
+    }
+
+    public void setNrKonta(String nrKonta) {
+        this.nrKonta = nrKonta;
     }
 
     @Override
@@ -39,20 +51,22 @@ public class Klient {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Klient klient = (Klient) o;
-        return Objects.equals(idKlienta, klient.idKlienta) &&
-                Objects.equals(stanKontaKlienta, klient.stanKontaKlienta);
+        return idKlienta.equals(klient.idKlienta) &&
+                stanKonta.equals(klient.stanKonta) &&
+                nrKonta.equals(klient.nrKonta);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idKlienta, stanKontaKlienta);
+        return Objects.hash(idKlienta, stanKonta, nrKonta);
     }
 
     @Override
     public String toString() {
         return "Klient{" +
                 "idKlienta=" + idKlienta +
-                ", stanKontaKlienta=" + stanKontaKlienta +
+                ", stanKonta=" + stanKonta +
+                ", nrKonta='" + nrKonta + '\'' +
                 '}';
     }
 }

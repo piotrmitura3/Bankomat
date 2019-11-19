@@ -74,17 +74,17 @@ class KlientWeryfikatorStart {
 
         Klient klient1 = Klient.builder()
                 .idKlienta(4534)
-                .stanKontaKlienta(new BigDecimal(13000))
+                .stanKonta(new BigDecimal(13000))
                 .build();
 
         Klient klient2 = Klient.builder()
                 .idKlienta(7564)
-                .stanKontaKlienta(new BigDecimal(15000))
+                .stanKonta(new BigDecimal(15000))
                 .build();
 
         Klient klient3 = Klient.builder()
                 .idKlienta(5644)
-                .stanKontaKlienta(new BigDecimal(1200))
+                .stanKonta(new BigDecimal(1200))
                 .build();
         listaKlientow.add(klient1);
         listaKlientow.add(klient2);

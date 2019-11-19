@@ -18,7 +18,7 @@ public class PanelWplaty extends JPanel {
     private KlientZnajdz klientZnajdz = new KlientZnajdz(bazaKlientow);
     private GlownaRamka glownaRamka;
     private Klient klient;
-    private PanelWplaty panelWplaty;
+
     public PanelWplaty(GlownaRamka glownaRamka) {
         this.glownaRamka = glownaRamka;
         setLayout(new FlowLayout());
@@ -38,11 +38,12 @@ public class PanelWplaty extends JPanel {
 
     private void wplataNaKonto(){
         klient = klientZnajdz.znajdzKlienta(glownaRamka.getNrKlientaTextField());
-        BigDecimal stanKontaKlienta = klient.getStanKontaKlienta();
+        BigDecimal stanKontaKlienta = klient.getStanKonta();
         int rodzajOperacji = 1;
         BigDecimal kwotaDoWplaty = BigDecimal.valueOf(Integer.parseInt(kwotaDoWplatyTextField.getText()));
         operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWplaty, klient);
         BigDecimal stanKontaPoWplacie = stanKontaKlienta.add(kwotaDoWplaty);
+        System.out.println(klient);
         JOptionPane.showMessageDialog(null, "Stan konta wynosi: " + stanKontaPoWplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);    }
 
     private void stworzActionListner(){

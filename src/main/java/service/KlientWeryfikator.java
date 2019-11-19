@@ -4,6 +4,7 @@ package service;
 import repo.BazaKlientow;
 import model.Klient;
 
+
 public class KlientWeryfikator {
     private BazaKlientow bazaKlientow;
 
@@ -13,7 +14,7 @@ public class KlientWeryfikator {
 
     public boolean weryfikujKlienta(Integer nrKlienta) {
 
-        //bazaKlientow.getListaNumerowKlientow().stream().filter(klient -> nrKlienta.equals(new BigDecimal(4)));
+ //       bazaKlientow.getListaNumerowKlientow().stream().filter(klient -> nrKlienta.equals(new BigDecimal(klient.getIdKlienta())));
         if (nrKlienta == null){
             return false;
         }
