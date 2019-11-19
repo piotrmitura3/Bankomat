@@ -13,12 +13,12 @@ public class Start {
         KlientWeryfikator klientWeryfikator = new KlientWeryfikator(bazaKlientow);
         KlientZnajdz klientZnajdz = new KlientZnajdz(bazaKlientow);
         OperacjeKlienta operacjeKlienta = new OperacjeKlienta();
-        Bankomat bankomat = new Bankomat(klientWeryfikator, operacjeKlienta, klientZnajdz);
-
-        bankomat.startBankomat(7564, 1, new BigDecimal(16000));
         PrzelewService przelewService = new PrzelewService();
-        przelewService.przelewBankowy(new BigDecimal(String.valueOf(5000)), Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(13000)).build(),
-                Klient.builder().idKlienta(7564).stanKonta(new BigDecimal(6000)).build());
+        Bankomat bankomat = new Bankomat(klientWeryfikator, operacjeKlienta, klientZnajdz, przelewService);
+
+        //bankomat.startBankomat(7564, 1, new BigDecimal(16000));
+        bankomat.przlewWBankomacie(4534, 5644, new BigDecimal(12000));
+
         //GlownaRamka gLownaRamka = new GlownaRamka();
     }
 }

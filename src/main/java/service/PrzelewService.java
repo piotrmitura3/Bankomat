@@ -20,6 +20,11 @@ public class PrzelewService {
             return stanKontaNadawcy;
         }
 
+        if (kwotaDoPrzelania.compareTo(BigDecimal.ZERO) == 0){
+            System.out.println("Podaj poprawna kwote!");
+            return stanKontaNadawcy;
+        }
+
         if (kwotaDoPrzelania.compareTo(stanKontaNadawcy) <= 0) {
             stanKontaNadawcy = stanKontaNadawcy.subtract(kwotaDoPrzelania);
             stanKontaOdbiorcy = stanKontaOdbiorcy.add(kwotaDoPrzelania);

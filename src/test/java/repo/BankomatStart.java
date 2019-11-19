@@ -9,10 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import service.Bankomat;
-import service.KlientWeryfikator;
-import service.KlientZnajdz;
-import service.OperacjeKlienta;
+import service.*;
 
 import java.math.BigDecimal;
 
@@ -28,10 +25,12 @@ class BankomatStart {
     private KlientZnajdz klientZnajdz;
     @Mock
     private OperacjeKlienta operacjeKlienta;
+    @Mock
+    private PrzelewService przelewService;
 
     @BeforeEach
     void setup(){
-        bankomat = new Bankomat(klientWeryfikator, operacjeKlienta, klientZnajdz);
+        bankomat = new Bankomat(klientWeryfikator, operacjeKlienta, klientZnajdz, przelewService);
     }
 
     @Test
