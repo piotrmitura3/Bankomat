@@ -1,9 +1,11 @@
+import model.Klient;
+import model.Przelew;
 import repo.BazaKlientow;
-import service.Bankomat;
-import service.KlientWeryfikator;
-import service.KlientZnajdz;
-import service.OperacjeKlienta;
+import service.*;
 import widok.GlownaRamka;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class Start {
     public static void main(String[] args) {
@@ -12,7 +14,11 @@ public class Start {
         KlientZnajdz klientZnajdz = new KlientZnajdz(bazaKlientow);
         OperacjeKlienta operacjeKlienta = new OperacjeKlienta();
         Bankomat bankomat = new Bankomat(klientWeryfikator, operacjeKlienta, klientZnajdz);
-        //repo.startBankomat(7564, 1, new BigDecimal(16000));
-        GlownaRamka gLownaRamka = new GlownaRamka();
+
+        bankomat.startBankomat(7564, 1, new BigDecimal(16000));
+        PrzelewService przelewService = new PrzelewService();
+        przelewService.przelewBankowy(new BigDecimal(String.valueOf(5000)), Klient.builder().idKlienta(4534).stanKonta(new BigDecimal(13000)).build(),
+                Klient.builder().idKlienta(7564).stanKonta(new BigDecimal(6000)).build());
+        //GlownaRamka gLownaRamka = new GlownaRamka();
     }
 }
