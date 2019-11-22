@@ -17,18 +17,24 @@ public class BazaKlientow {
         Klient klient1 = Klient.builder()
                 .idKlienta(4534)
                 .stanKonta(new BigDecimal(13000))
+                .imie("Pawel")
+                .nazwisko("Kowal")
                 .nrKonta("82 1020 5226 0000 6102 0417 7895")
                 .build();
 
         Klient klient2 = Klient.builder()
                 .idKlienta(7564)
                 .stanKonta(new BigDecimal(15000))
+                .imie("Jan")
+                .nazwisko("Kowalski")
                 .nrKonta("83 1010 1023 0000 2613 9510 0000")
                 .build();
 
         Klient klient3 = Klient.builder()
                 .idKlienta(5644)
                 .stanKonta(new BigDecimal(1200))
+                .imie("Adam")
+                .nazwisko("Nowak")
                 .nrKonta("42 1564 1535 8468 3153 5343 4615")
                 .build();
         listaNumerowKlientow.add(klient1);

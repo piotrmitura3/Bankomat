@@ -1,4 +1,4 @@
-package repo;
+package service;
 
 import model.Klient;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import repo.BazaKlientow;
 import service.KlientZnajdz;
 
 import static org.assertj.core.api.Assertions.*;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class KlientZnajdzStart {
+class KlientZnajdzTest {
     private KlientZnajdz klientZnajdz;
     @Mock
     private BazaKlientow bazaKlientow;

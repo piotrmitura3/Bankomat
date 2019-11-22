@@ -5,6 +5,7 @@ import service.KlientWeryfikator;
 import service.KlientZnajdz;
 import service.OperacjeKlienta;
 
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 
 public class Bankomat {
@@ -28,7 +29,7 @@ public class Bankomat {
         }
     }
 
-    public void przlewWBankomacie(Integer nrKlientaNadawcy, Integer nrKlientaOdbiorcy, BigDecimal kwotaDoPrzelewu) {
+    public void przlewWBankomacie(Integer nrKlientaNadawcy, Integer nrKlientaOdbiorcy, BigDecimal kwotaDoPrzelewu) throws FileNotFoundException {
         if (klientWeryfikator.weryfikujKlienta(nrKlientaNadawcy) && klientWeryfikator.weryfikujKlienta(nrKlientaOdbiorcy)){
             przelewService.przelewBankowy(kwotaDoPrzelewu, znajdzKlienta.znajdzKlienta(nrKlientaOdbiorcy), znajdzKlienta.znajdzKlienta(nrKlientaNadawcy));
         } else {

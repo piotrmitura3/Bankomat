@@ -26,7 +26,7 @@ public class PanelWplaty extends JPanel {
         stworzActionListner();
     }
 
-    private void stworzKomponenty(){
+    private void stworzKomponenty() {
         kwotaDoWplatyLabel = new JLabel("Podaj kwote: ");
         kwotaDoWplatyTextField = new JTextField(12);
         potwierdzWplateButton = new JButton("Potwierdz wplate");
@@ -36,7 +36,7 @@ public class PanelWplaty extends JPanel {
         this.add(potwierdzWplateButton);
     }
 
-    private void wplataNaKonto(){
+    private void wplataNaKonto() {
         klient = klientZnajdz.znajdzKlienta(glownaRamka.getNrKlientaTextField());
         BigDecimal stanKontaKlienta = klient.getStanKonta();
         int rodzajOperacji = 1;
@@ -44,7 +44,8 @@ public class PanelWplaty extends JPanel {
         operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWplaty, klient);
         BigDecimal stanKontaPoWplacie = stanKontaKlienta.add(kwotaDoWplaty);
         System.out.println(klient);
-        JOptionPane.showMessageDialog(null, "Stan konta wynosi: " + stanKontaPoWplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);    }
+        JOptionPane.showMessageDialog(null, "Stan konta wynosi: " + stanKontaPoWplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
+    }
 
     private void stworzActionListner(){
         potwierdzWplateButton.addActionListener(e -> {

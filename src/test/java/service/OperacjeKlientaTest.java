@@ -1,4 +1,4 @@
-package repo;
+package service;
 
 import model.Klient;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @ExtendWith(MockitoExtension.class)
-class OperacjeKlientaStart {
+class OperacjeKlientaTest {
     private OperacjeKlienta operacjeKlienta;
     @BeforeEach
     void setup(){

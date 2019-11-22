@@ -10,16 +10,18 @@ public class Klient {
     private Integer idKlienta;
     private BigDecimal stanKonta;
     private String nrKonta;
-
-
+    private String imie;
+    private String nazwisko;
 
     public Klient() {
     }
 
-    public Klient(Integer idKlienta, BigDecimal stanKonta, String nrKonta) {
+    public Klient(Integer idKlienta, BigDecimal stanKonta, String nrKonta, String imie, String nazwisko) {
         this.idKlienta = idKlienta;
         this.stanKonta = stanKonta;
         this.nrKonta = nrKonta;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
     }
 
     public Integer getIdKlienta() {
@@ -46,6 +48,22 @@ public class Klient {
         this.nrKonta = nrKonta;
     }
 
+    public String getImie() {
+        return imie;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,20 +71,18 @@ public class Klient {
         Klient klient = (Klient) o;
         return idKlienta.equals(klient.idKlienta) &&
                 stanKonta.equals(klient.stanKonta) &&
-                nrKonta.equals(klient.nrKonta);
+                nrKonta.equals(klient.nrKonta) &&
+                imie.equals(klient.imie) &&
+                nazwisko.equals(klient.nazwisko);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idKlienta, stanKonta, nrKonta);
+        return Objects.hash(idKlienta, stanKonta, nrKonta, imie, nazwisko);
     }
 
     @Override
     public String toString() {
-        return "Klient{" +
-                "idKlienta=" + idKlienta +
-                ", stanKonta=" + stanKonta +
-                ", nrKonta='" + nrKonta + '\'' +
-                '}';
+        return imie + " " + nazwisko + " nr konta: " + nrKonta;
     }
 }

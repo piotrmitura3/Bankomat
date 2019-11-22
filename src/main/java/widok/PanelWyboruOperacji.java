@@ -59,6 +59,10 @@ public class PanelWyboruOperacji extends JPanel {
         stanKontaButton.addActionListener(e -> {
             stanKontaKlienta();
         });
+
+        przelewyButton.addActionListener(e -> {
+            glownaRamka.setContentPane(new PanelPrzelewu(glownaRamka));
+        });
     }
 
 

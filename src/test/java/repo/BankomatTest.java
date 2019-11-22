@@ -17,7 +17,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class BankomatStart {
+class BankomatTest {
     private Bankomat bankomat;
     @Mock
     private KlientWeryfikator klientWeryfikator;
