@@ -48,7 +48,8 @@ public class PanelWyboruOperacji extends JPanel {
 
     public void stworzActionListner(){
         wyborWyplatyButton.addActionListener(e -> {
-            glownaRamka.setContentPane(new PanelWyplaty());
+            glownaRamka.setContentPane(new PanelWyplaty(glownaRamka));
+            glownaRamka.pack();
         });
 
         wyborWplatyButton.addActionListener(e -> {

@@ -40,11 +40,35 @@ public class PanelWplaty extends JPanel {
         klient = klientZnajdz.znajdzKlienta(glownaRamka.getNrKlientaTextField());
         BigDecimal stanKontaKlienta = klient.getStanKonta();
         int rodzajOperacji = 1;
-        BigDecimal kwotaDoWplaty = BigDecimal.valueOf(Integer.parseInt(kwotaDoWplatyTextField.getText()));
-        operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWplaty, klient);
-        BigDecimal stanKontaPoWplacie = stanKontaKlienta.add(kwotaDoWplaty);
+        BigDecimal kwotaDoWplaty = new BigDecimal(kwotaDoWplatyTextField.getText());
+        //BigDecimal kwotaDoWplaty = BigDecimal.valueOf(Integer.parseInt(kwotaDoWplatyTextField.getText()));
+
+        //operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWplaty, klient);
+
+        //BigDecimal stanKontaPoWplacie = stanKontaKlienta.add(kwotaDoWplaty);
+        //BigDecimal stanKontaPoWplacie = new BigDecimal(String.valueOf(klient.getStanKonta().add(kwotaDoWplaty)));
         System.out.println(klient);
-        JOptionPane.showMessageDialog(null, "Stan konta wynosi: " + stanKontaPoWplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
+
+        try{
+
+        if (kwotaDoWplaty == null){
+            JOptionPane.showMessageDialog(null, "Podana kwota jest pusta. Podaj ponownie",
+                    "Komunikat bledu", JOptionPane.CLOSED_OPTION);
+        } else if (kwotaDoWplaty.compareTo(BigDecimal.ZERO) > 0){
+            operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWplaty, klient);
+            BigDecimal stanKontaPoWplacie = new BigDecimal(String.valueOf(klient.getStanKonta().add(kwotaDoWplaty)));
+            JOptionPane.showMessageDialog(null, "Stan konta wynosi: "
+                    + stanKontaPoWplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
+        } else {
+            JOptionPane.showMessageDialog(null, "Blad podczas wpisywania. Podaj ponownie",
+                    "Blad wpisywania", JOptionPane.CLOSED_OPTION);
+        }
+        } catch (NumberFormatException e){
+            /*JOptionPane.showMessageDialog(null, "Podana kwota jest pusta. Podaj ponownie",
+                    "Komunikat bledu", JOptionPane.CLOSED_OPTION);*/
+            System.err.println("Blad wpisywania");
+        }
+
     }
 
     private void stworzActionListner(){
@@ -52,6 +76,4 @@ public class PanelWplaty extends JPanel {
             wplataNaKonto();
         });
     }
-
-
 }
