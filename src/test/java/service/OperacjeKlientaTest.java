@@ -11,8 +11,6 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-@ExtendWith(MockitoExtension.class)
 class OperacjeKlientaTest {
     private OperacjeKlienta operacjeKlienta;
     @BeforeEach

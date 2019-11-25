@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,9 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class PrzelewServiceTest {
     private PrzelewService przelewService = new PrzelewService();
 
-
     @Test
-    public void powinienZawieracDanePrzelewu() throws FileNotFoundException {
+    void powinienZawieracDanePrzelewu() throws FileNotFoundException {
         Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
         Klient nadawca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
 
@@ -29,5 +30,78 @@ class PrzelewServiceTest {
 
         assertThat(aktualnaZawartosc).isEqualTo(spodziewanaZawartosc);
     }
+    @Test
+    void powinnoZwrocicPoprawnyStanKontaNadawcyPoWykonanymPrzelewie() throws FileNotFoundException {
+        //given
+        Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(6000)).build();
+        Klient nadawca = Klient.builder().idKlienta(5643).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
+        BigDecimal kwotaDoPrzelania = new BigDecimal(4000);
+
+        BigDecimal spodziewanyStanKonta = new BigDecimal(9000);
+
+        //when
+        BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
+
+        //then
+        assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
+    }
+
+    @Test
+    void powinnoZwrocicStanKontaNadawcyBezZmianJesliPodanaKwotaJestNull() throws FileNotFoundException {
+        //given
+        Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(6000)).build();
+        Klient nadawca = Klient.builder().idKlienta(5643).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
+        BigDecimal kwotaDoPrzelania = null;
+        BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
+        //when
+        BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
+        //them
+        assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
+    }
+
+    @Test
+    void powinnoZwrocicStanKontaBezZmianJesliKwotaDoPrzelaniaJestMniejszaOdZera() throws FileNotFoundException {
+        //given
+        Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(6000)).build();
+        Klient nadawca = Klient.builder().idKlienta(5643).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
+        BigDecimal kwotaDoPrzelania = new BigDecimal(-2000);
+
+        BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
+        //when
+        BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania,odbiorca, nadawca);
+        //them
+        assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
+    }
+
+    @Test
+    void powinnoZwrocicStanKontaBezZmianJesliKwotaDoPrzelaniaJestRownaZero() throws FileNotFoundException {
+        //given
+        Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(6000)).build();
+        Klient nadawca = Klient.builder().idKlienta(5643).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
+        BigDecimal kwotaDoPrzelania = new BigDecimal(0);
+        BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
+        //when
+        BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
+        //them
+        assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
+    }
+
+    @Test
+    void powinnoZwrocicStanKontaBezZmianJesliKwotaJestWyzszaOdStanuKontaNadawcy() throws FileNotFoundException {
+        //given
+        Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(6000)).build();
+        Klient nadawca = Klient.builder().idKlienta(5643).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
+        BigDecimal kwotaDoPrzelania = new BigDecimal(14000);
+
+        BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
+
+        //when
+        BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
+        //them
+        assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
+    }
+
+
+
 
 }

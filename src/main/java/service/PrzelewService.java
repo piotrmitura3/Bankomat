@@ -29,7 +29,6 @@ public class PrzelewService {
             stanKontaNadawcy = stanKontaNadawcy.subtract(kwotaDoPrzelania);
             stanKontaOdbiorcy = stanKontaOdbiorcy.add(kwotaDoPrzelania);
             System.out.println("Stan konta po doknaniu przelewu: " + stanKontaNadawcy);
-            System.out.println("Stan konta odbiorcy: " + stanKontaOdbiorcy);
 
             PrintWriter zapis = new PrintWriter("Historia_przelewów.txt");
             zapis.println(nadawca + " Kwota do przelania: " + kwotaDoPrzelania + " Przelew do: "

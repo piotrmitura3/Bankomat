@@ -64,9 +64,8 @@ public class PanelWplaty extends JPanel {
                     "Blad wpisywania", JOptionPane.CLOSED_OPTION);
         }
         } catch (NumberFormatException e){
-            /*JOptionPane.showMessageDialog(null, "Podana kwota jest pusta. Podaj ponownie",
-                    "Komunikat bledu", JOptionPane.CLOSED_OPTION);*/
-            System.err.println("Blad wpisywania");
+            JOptionPane.showMessageDialog(null, "Podana kwota jest pusta. Podaj ponownie",
+                    "Komunikat bledu", JOptionPane.CLOSED_OPTION);
         }
 
     }
