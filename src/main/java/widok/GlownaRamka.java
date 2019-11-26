@@ -55,21 +55,11 @@ public class GlownaRamka extends JFrame {
         }
     }
 
-//    public void znajdowanieNrKlientaNaPodstawiePola(){
-//        Integer nrKlienta = Integer.parseInt(nrKlientaTextField.getText());
-//        klientZnajdz.znajdzKlienta(nrKlienta);
-//    }
 
     private void stworzActionListner(){
         potwierdzButton.addActionListener(e -> {
             weryfikacjaNrKlientaNaPodstawiePola();
             pack();
-
-                /*JComponent comp = (JComponent) e.getSource();
-                Window win = SwingUtilities.getWindowAncestor(comp);
-                win.dispose();
-                //wychodzenie z aplikacji
-                */
         });
     }
 }

@@ -31,6 +31,7 @@ class PrzelewServiceTest {
 
         assertThat(aktualnaZawartosc).isEqualTo(spodziewanaZawartosc);
     }
+
     @Test
     void powinnoZwrocicPoprawnyStanKontaNadawcyPoWykonanymPrzelewie() throws FileNotFoundException {
         //given
@@ -56,7 +57,7 @@ class PrzelewServiceTest {
         BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
         //when
         BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
-        //them
+        //then
         assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
     }
 
@@ -70,7 +71,7 @@ class PrzelewServiceTest {
         BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
         //when
         BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania,odbiorca, nadawca);
-        //them
+        //then
         assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
     }
 
@@ -83,7 +84,7 @@ class PrzelewServiceTest {
         BigDecimal spodziewanyStanKonta = new BigDecimal(13000);
         //when
         BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
-        //them
+        //then
         assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
     }
 
@@ -98,7 +99,7 @@ class PrzelewServiceTest {
 
         //when
         BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
-        //them
+        //then
         assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
     }
 
@@ -113,7 +114,7 @@ class PrzelewServiceTest {
         BigDecimal spodziewanyWynik = new BigDecimal(13001);
         //when
         BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
-        //them
+        //then
         assertThrows(NumberFormatException.class,() -> {
             BigDecimal
         });

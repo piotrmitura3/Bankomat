@@ -38,7 +38,6 @@ public class PanelWplaty extends JPanel {
 
     private void wplataNaKonto() {
         klient = klientZnajdz.znajdzKlienta(glownaRamka.getNrKlientaTextField());
-        BigDecimal stanKontaKlienta = klient.getStanKonta();
         int rodzajOperacji = 1;
 
         try{

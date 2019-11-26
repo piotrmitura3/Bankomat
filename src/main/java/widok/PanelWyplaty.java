@@ -49,7 +49,6 @@ public class PanelWyplaty extends JPanel {
                 kwotaTextField.setText("");
             } else if (kwotaDoWyplaty.compareTo(stanKontaKlienta) <= 0) {
                 operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWyplaty, klient);
-                //BigDecimal stanKontaPoWyplacie = stanKontaKlienta.subtract(kwotaDoWyplaty);
                 BigDecimal stanKontaPoWyplacie = new BigDecimal(String.valueOf(klient.getStanKonta().subtract(kwotaDoWyplaty)));
                 JOptionPane.showMessageDialog(null, "Stan konta po wyplacie: "
                         + stanKontaPoWyplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
