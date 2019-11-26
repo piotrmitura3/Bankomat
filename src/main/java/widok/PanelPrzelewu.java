@@ -54,8 +54,7 @@ public class PanelPrzelewu extends JPanel {
         for (Klient klient : bazaKlientow.pobierzKlientow()) {
             klientComboBox.addItem(klient);
             klientComboBox.removeItem(znajdzNadawce());
-            //Klient selectedItem = (Klient) klientComboBox.getSelectedItem();
-            //imieOdbiorcyTextField.setText(selectedItem.getImie());
+
         }
 
         this.add(klientComboBox);
@@ -105,7 +104,9 @@ public class PanelPrzelewu extends JPanel {
                     JOptionPane.showMessageDialog(null, "Niepoprawna kwota");
                 } else if (kwota.compareTo(znajdzNadawce().getStanKonta()) <= 0){
                     przelewService.przelewBankowy(kwota, odbiorca, znajdzNadawce());
-                    JOptionPane.showMessageDialog(null, "Wplata zakonczona powodzeniem");
+                    BigDecimal stanKontaPoPrzelewie = przelewService.przelewBankowy(kwota,odbiorca,znajdzNadawce());
+                    JOptionPane.showMessageDialog(null, "Wplata zakonczona powodzeniem." +
+                             " Stan konta po przelewie: " + stanKontaPoPrzelewie);
                     glownaRamka.setContentPane(new PanelWyboruOperacji(glownaRamka));
                     System.exit(0);
                 } else {

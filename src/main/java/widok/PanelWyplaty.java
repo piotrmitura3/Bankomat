@@ -40,16 +40,31 @@ public class PanelWyplaty extends JPanel {
         klient = klientZnajdz.znajdzKlienta(glownaRamka.getNrKlientaTextField());
         BigDecimal stanKontaKlienta = klient.getStanKonta();
         int rodzajOperacji = 2;
-        BigDecimal kwotaDoWyplaty = new BigDecimal(kwotaTextField.getText());
-        operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWyplaty, klient);
-        //BigDecimal stanKontaPoWyplacie = stanKontaKlienta.subtract(kwotaDoWyplaty);
-        BigDecimal stanKontaPoWyplacie = new BigDecimal(String.valueOf(klient.getStanKonta()));
-        System.out.println(klient);
-        JOptionPane.showMessageDialog(null, "Stan konta po wyplacie: "
-                + stanKontaPoWyplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
+
+        try {
+            BigDecimal kwotaDoWyplaty = new BigDecimal(kwotaTextField.getText());
+            System.out.println(klient);
+            if (kwotaDoWyplaty.compareTo(BigDecimal.ZERO) < 0){
+                JOptionPane.showMessageDialog(null, "Podana kwota jest mniejsza od 0. Podaj ponownie");
+                kwotaTextField.setText("");
+            } else if (kwotaDoWyplaty.compareTo(stanKontaKlienta) <= 0) {
+                operacjeKlienta.operacjeKlienta(rodzajOperacji, kwotaDoWyplaty, klient);
+                //BigDecimal stanKontaPoWyplacie = stanKontaKlienta.subtract(kwotaDoWyplaty);
+                BigDecimal stanKontaPoWyplacie = new BigDecimal(String.valueOf(klient.getStanKonta().subtract(kwotaDoWyplaty)));
+                JOptionPane.showMessageDialog(null, "Stan konta po wyplacie: "
+                        + stanKontaPoWyplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
+                System.exit(0);
+            } else {
+                JOptionPane.showMessageDialog(null, "Brak wystarczajacych srodkow na koncie. Podaj ponownie");
+                kwotaTextField.setText("");
+            }
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Bledny format. Podaj ponownie");
+            kwotaTextField.setText("");
+        }
     }
 
-    public void stworzActionListner(){
+    private void stworzActionListner(){
         potwierdzButton.addActionListener(e -> {
             wyplataZKonta();
         });

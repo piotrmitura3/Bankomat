@@ -50,6 +50,7 @@ public class PanelWplaty extends JPanel {
             BigDecimal stanKontaPoWplacie = new BigDecimal(String.valueOf(klient.getStanKonta().add(kwotaDoWplaty)));
             JOptionPane.showMessageDialog(null, "Stan konta wynosi: "
                     + stanKontaPoWplacie, "Stan konta Klienta", JOptionPane.CLOSED_OPTION);
+            System.exit(0);
         } else {
             JOptionPane.showMessageDialog(null, "Blad podczas wpisywania. Podaj ponownie",
                     "Blad wpisywania", JOptionPane.CLOSED_OPTION);

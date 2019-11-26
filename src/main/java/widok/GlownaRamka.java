@@ -18,6 +18,7 @@ public class GlownaRamka extends JFrame {
 
     public GlownaRamka() {
         setLayout(new FlowLayout());
+        setBounds(500,500,500,120);
         stworzRamke();
         setVisible(true);
         stworzActionListner();
@@ -40,12 +41,16 @@ public class GlownaRamka extends JFrame {
 
 
     public void weryfikacjaNrKlientaNaPodstawiePola() {
+        try{
         Integer nrKlienta = Integer.parseInt(nrKlientaTextField.getText());
         if(klientWeryfikator.weryfikujKlienta(nrKlienta)) {
             klientZnajdz.znajdzKlienta(nrKlienta);
             setContentPane(new PanelWyboruOperacji(this));
         } else {
             JOptionPane.showMessageDialog(null, "Brak klienta w bazie", "Brak klienta", JOptionPane.ERROR_MESSAGE);
+            nrKlientaTextField.setText("");
+        }}catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Bledny format");
             nrKlientaTextField.setText("");
         }
     }
