@@ -65,9 +65,6 @@ public class GlownaRamka extends JFrame {
                 win.dispose();
                 //wychodzenie z aplikacji
                 */
-
-
-
         });
     }
 }

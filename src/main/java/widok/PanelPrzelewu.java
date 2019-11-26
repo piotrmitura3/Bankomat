@@ -88,15 +88,36 @@ public class PanelPrzelewu extends JPanel {
         );
 
         wykonajPrzelewButtono.addActionListener(e -> {
+            wykonywaniePrzelewu();
+        });
+
+    }
+
+    private void wykonywaniePrzelewu() {
+        try {
             BigDecimal kwota = new BigDecimal(kwotaDoPrzelewuTextField.getText());
             Klient odbiorca = (Klient) klientComboBox.getSelectedItem();
+
             try {
-                przelewService.przelewBankowy(kwota, odbiorca, znajdzNadawce());
+                if (kwota.compareTo(BigDecimal.ZERO) < 0) {
+                    JOptionPane.showMessageDialog(null, "Kwota mniejsza od 0");
+                } else if (kwota.compareTo(BigDecimal.ZERO) == 0){
+                    JOptionPane.showMessageDialog(null, "Niepoprawna kwota");
+                } else if (kwota.compareTo(znajdzNadawce().getStanKonta()) <= 0){
+                    przelewService.przelewBankowy(kwota, odbiorca, znajdzNadawce());
+                    JOptionPane.showMessageDialog(null, "Wplata zakonczona powodzeniem");
+                    glownaRamka.setContentPane(new PanelWyboruOperacji(glownaRamka));
+                    System.exit(0);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Brak srodkow");
+                }
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
             }
-        });
-
+        }catch (NumberFormatException e1e){
+            JOptionPane.showMessageDialog(null, "Blad");
+        }
+        kwotaDoPrzelewuTextField.setText("");
     }
 
     private void ustawDaneOdbiorcy() {

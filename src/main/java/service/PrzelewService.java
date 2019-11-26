@@ -15,6 +15,7 @@ public class PrzelewService {
 
         File file = new File("Histori_przelewów.txt");
 
+        try {
 
         if (kwotaDoPrzelania == null) {
             System.out.println("Pusta kwota");
@@ -39,6 +40,9 @@ public class PrzelewService {
             return stanKontaNadawcy;
         } else {
             System.out.println("Brak wystarczających środków na koncie");
+            return stanKontaNadawcy;
+        }}catch (NumberFormatException e) {
+            System.out.println("Kwota jest niepoprawna");
             return stanKontaNadawcy;
         }
     }

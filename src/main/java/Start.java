@@ -18,7 +18,11 @@ public class Start {
         Bankomat bankomat = new Bankomat(klientWeryfikator, operacjeKlienta, klientZnajdz, przelewService);
 
         //bankomat.startBankomat(7564, 1, new BigDecimal(16000));
-        bankomat.przlewWBankomacie(4534, 5644, new BigDecimal(12000));
+        try {
+            bankomat.przlewWBankomacie(4534, 5644, new BigDecimal("dfsdf"));
+        } catch(NumberFormatException e){
+            System.out.println("Kwota nieprawidlowa");
+        }
 
         GlownaRamka gLownaRamka = new GlownaRamka();
     }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -101,7 +102,20 @@ class PrzelewServiceTest {
         assertThat(aktualnyStanKonta).isEqualTo(spodziewanyStanKonta);
     }
 
+    /*@Test
+    void powinnoZwrocicStanKontaBezZmianJesliPodaneSaLitery() throws FileNotFoundException {
+        //given
+        Klient odbiorca = Klient.builder().idKlienta(4534).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(6000)).build();
+        Klient nadawca = Klient.builder().idKlienta(5643).nrKonta("15435153").imie("Piotr").nazwisko("kjfsd").stanKonta(new BigDecimal(13000)).build();
 
+        BigDecimal kwotaDoPrzelania = new BigDecimal("dsdds");
 
-
+        BigDecimal spodziewanyWynik = new BigDecimal(13001);
+        //when
+        BigDecimal aktualnyStanKonta = przelewService.przelewBankowy(kwotaDoPrzelania, odbiorca, nadawca);
+        //them
+        assertThrows(NumberFormatException.class,() -> {
+            BigDecimal
+        });
+    }*/
 }

@@ -15,6 +15,8 @@ public class OperacjeKlienta {
                     return stanKonta;
                 }
 
+
+
                 if (kwotaDoWplatyLubWyplaty.compareTo(BigDecimal.ZERO) > 0) {
                     stanKonta = stanKonta.add(kwotaDoWplatyLubWyplaty);
                     System.out.println("Stan konta po wplacie: " + stanKonta);
